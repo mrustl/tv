@@ -1,0 +1,23 @@
+Package: tvl
+Title: R Package for TV-L
+Version: 0.0.0.9000
+Authors@R: c(
+    person("Michael", "Rustler", , "michael@rustler.me", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0003-0647-7726"))
+  )
+Description: R package for TV-L (Tarifvertrag für den Öffentlichen Dienst
+    der Länder).
+License: MIT + file LICENSE
+URL: https://github.com/KWB-R/tvl
+BugReports: https://github.com/KWB-R/tvl/issues
+Imports: 
+    magrittr
+Suggests: 
+    covr,
+    knitr,
+    rmarkdown
+VignetteBuilder: 
+    knitr
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.2
