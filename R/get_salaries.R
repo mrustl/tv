@@ -12,7 +12,7 @@
 #' get_salary()
 #' @importFrom rlang .data
 #' @importFrom rvest read_html html_element html_text html_table
-#' @importFrom stringr str_extract_all str_detect
+#' @importFrom stringr str_extract_all str_detect str_remove
 #' @importFrom dplyr filter select mutate
 #' @importFrom tidyr pivot_longer
 #' @importFrom tidyselect starts_with
@@ -60,7 +60,9 @@ tv_tbl %>%
   tidyr::pivot_longer(cols = tidyselect::starts_with("step_"),
                       names_to = "step",
                       values_to = "salary") %>%
-  dplyr::mutate(unit = unit,
+  dplyr::mutate(step = stringr::str_remove(.data$step, "step_") %>%
+                  as.integer(),
+                unit = unit,
                 tariff_title = title,
                 tariff_year = stringr::str_extract(.data$tariff_title, "[0-9]{4}"),
                 tariff_date_from = date_from_to[1],
