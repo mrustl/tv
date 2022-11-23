@@ -2,8 +2,8 @@ pandoc: 2.19.2
 pkgdown: 2.0.6
 pkgdown_sha: ~
 articles:
-  workflow: workflow.html
-last_built: 2022-11-23T18:35Z
+  tutorial: tutorial.html
+last_built: 2022-11-23T22:07Z
 urls:
   reference: https://mrustl.de/tv/reference
   article: https://mrustl.de/tv/articles
