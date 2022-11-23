@@ -14,7 +14,7 @@ For installing the latest release of this R package run the following code below
 ```r
 # Enable repository from mrustl
 options(repos = c(
-  kwbr = 'https://mrustl.r-universe.dev',
+  mrustl = 'https://mrustl.r-universe.dev',
   CRAN = 'https://cloud.r-project.org'))
   
 # Download and install 'tv' in R
