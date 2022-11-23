@@ -115,7 +115,7 @@ get_salary <- function(year = 2009,
 
 #' Get Salaries
 #' @description wrapper around [get_salary()] for multiple years
-#' @param years years of tariffs to try to download (default: 2000:2022)
+#' @param years years of tariffs to try to download (default: 2008:2021)
 #' @inheritParams get_salary
 #' @param dbg print debug messages (default: TRUE)
 #' @return tibble with salaries for multiple years

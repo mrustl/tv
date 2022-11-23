@@ -5,7 +5,7 @@
 \title{Get Salaries}
 \usage{
 get_salaries(
-  years = 2000:2022,
+  years = 2008:2021,
   union_rate = "tv-l",
   area = "west",
   type = 1,
@@ -13,7 +13,7 @@ get_salaries(
 )
 }
 \arguments{
-\item{years}{years of tariffs to try to download (default: 2000:2022)}
+\item{years}{years of tariffs to try to download (default: 2008:2021)}
 
 \item{union_rate}{default: "tv-l"}
 
@@ -22,7 +22,7 @@ get_salaries(
 \item{type}{1: Monatswerte, 12: Jahreswerte, 3: Quartalswerte, "w": Wochenwerte,
 "t": Tageswerte, "v": werktagswerte (default: 1)}
 
-\item{dbg}{print debug}
+\item{dbg}{print debug messages (default: TRUE)}
 }
 \value{
 tibble with salaries for multiple years
@@ -31,6 +31,6 @@ tibble with salaries for multiple years
 wrapper around \code{\link[=get_salary]{get_salary()}} for multiple years
 }
 \examples{
-salaries <- get_salaries(years = 2010:2020)
+salaries <- get_salaries(years = 2008:2021)
 salaries
 }
