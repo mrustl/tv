@@ -5,25 +5,24 @@
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/tvl)]()
 [![R-Universe_Status_Badge](https://kwb-r.r-universe.dev/badges/tvl)](https://kwb-r.r-universe.dev/)
 
-R package for TV-L (Tarifvertrag für den Öffentlichen Dienst
-der Länder).
+R package for TV (Tarifvertrag).
 
 ## Installation
 
-For details on how to install KWB-R packages checkout our [installation tutorial](https://kwb-r.github.io/kwb.pkgbuild/articles/install.html).
+For installing the latest release of this R package run the following code below:
 
 ```r
-### Optionally: specify GitHub Personal Access Token (GITHUB_PAT)
-### See here why this might be important for you:
-### https://kwb-r.github.io/kwb.pkgbuild/articles/install.html#set-your-github_pat
+# Enable repository from mrustl
+options(repos = c(
+  kwbr = 'https://mrustl.r-universe.dev',
+  CRAN = 'https://cloud.r-project.org'))
+  
+# Download and install 'tv' in R
+install.packages('tv')
 
-# Sys.setenv(GITHUB_PAT = "mysecret_access_token")
-
-# Install package "remotes" from CRAN
-if (! require("remotes")) {
-  install.packages("remotes", repos = "https://cloud.r-project.org")
-}
-
-# Install KWB package 'tvl' from GitHub
-remotes::install_github("mrustl/tvl")
+# Browse the 'tv' manual pages
+help(package = 'tv')
 ```
+## Usage 
+
+Checkout the [Tutorial](articles/tutorial.html) using this R package.

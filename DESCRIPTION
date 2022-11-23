@@ -20,6 +20,7 @@ Imports:
     tidyselect
 Suggests: 
     covr,
+    DT,
     knitr,
     rmarkdown
 Remotes: 
