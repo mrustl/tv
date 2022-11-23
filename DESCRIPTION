@@ -1,21 +1,29 @@
-Package: tvl
-Title: R Package for TV-L
+Package: tv
+Title: R Package for TV (Tarifvertrag)
 Version: 0.0.0.9000
 Authors@R: c(
     person("Michael", "Rustler", , "michael@rustler.me", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-0647-7726"))
   )
-Description: R package for TV-L (Tarifvertrag für den Öffentlichen Dienst
-    der Länder).
+Description: R package for TV (Tarifvertrag).
 License: MIT + file LICENSE
-URL: https://github.com/KWB-R/tvl
-BugReports: https://github.com/KWB-R/tvl/issues
+URL: https://github.com/mrustl/tv
+BugReports: https://github.com/mrustl/tv/issues
 Imports: 
-    magrittr
+    dplyr, 
+    kwb.utils,
+    magrittr,
+    rlang,
+    rvest,
+    stringr,
+    tidyr,
+    tidyselect
 Suggests: 
     covr,
     knitr,
     rmarkdown
+Remotes: 
+    github::kwb-r/kwb.utils
 VignetteBuilder: 
     knitr
 Encoding: UTF-8

@@ -7,14 +7,14 @@ install.packages('kwb.pkgbuild')
 
 
 pkg <- list(
-  name = "tvl",
-  title = "R Package for TV-L",
+  name = "tv",
+  title = "R Package for TV (Tarifvertrag)",
   desc = paste(
-    "R package for TV-L (Tarifvertrag für den Öffentlichen Dienst der Länder)."
+    "R package for TV (Tarifvertrag)."
   )
 )
 
-kwb.pkgbuild::use_pkg_skeleton("tvl")
+kwb.pkgbuild::use_pkg_skeleton("tv")
 
 kwb.pkgbuild::use_pkg(
   pkg = pkg,
@@ -24,7 +24,7 @@ kwb.pkgbuild::use_pkg(
 
 kwb.pkgbuild::use_ghactions()
 
-kwb.pkgbuild::create_empty_branch_ghpages("tvl", org = "mrustl")
+kwb.pkgbuild::create_empty_branch_ghpages("tv", org = "mrustl")
 
 usethis::use_pipe()
 usethis::use_vignette("workflow")

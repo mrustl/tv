@@ -1,14 +1,13 @@
-[![R-CMD-check](https://github.com/mrustl/tvl/workflows/R-CMD-check/badge.svg)](https://github.com/mrustl/tvl/actions?query=workflow%3AR-CMD-check)
-[![pkgdown](https://github.com/mrustl/tvl/workflows/pkgdown/badge.svg)](https://github.com/mrustl/tvl/actions?query=workflow%3Apkgdown)
-[![codecov](https://codecov.io/github/mrustl/tvl/branch/main/graphs/badge.svg)](https://codecov.io/github/mrustl/tvl)
+[![R-CMD-check](https://github.com/mrustl/tv/workflows/R-CMD-check/badge.svg)](https://github.com/mrustl/tv/actions?query=workflow%3AR-CMD-check)
+[![pkgdown](https://github.com/mrustl/tv/workflows/pkgdown/badge.svg)](https://github.com/mrustl/tv/actions?query=workflow%3Apkgdown)
+[![codecov](https://codecov.io/github/mrustl/tv/branch/main/graphs/badge.svg)](https://codecov.io/github/mrustl/tv)
 [![Project Status](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/tvl)]()
-[![R-Universe_Status_Badge](https://kwb-r.r-universe.dev/badges/tvl)](https://kwb-r.r-universe.dev/)
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/tv)]()
+[![R-Universe_Status_Badge](https://kwb-r.r-universe.dev/badges/tv)](https://kwb-r.r-universe.dev/)
 
-# tvl
+# tv
 
-R package for TV-L (Tarifvertrag für den Öffentlichen Dienst
-der Länder).
+R package for TV (Tarifvertrag).
 
 ## Installation
 
@@ -26,12 +25,12 @@ if (! require("remotes")) {
   install.packages("remotes", repos = "https://cloud.r-project.org")
 }
 
-# Install KWB package 'tvl' from GitHub
-remotes::install_github("mrustl/tvl")
+# Install KWB package 'tv' from GitHub
+remotes::install_github("mrustl/tv")
 ```
 
 ## Documentation
 
-Release: [https://mrustl.github.io/tvl](https://mrustl.github.io/tvl)
+Release: [https://mrustl.github.io/tv](https://mrustl.github.io/tv)
 
-Development: [https://mrustl.github.io/tvl/dev](https://mrustl.github.io/tvl/dev)
+Development: [https://mrustl.github.io/tv/dev](https://mrustl.github.io/tv/dev)
