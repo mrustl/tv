@@ -99,31 +99,31 @@
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">salaries</span> <span class="op">&lt;-</span> <span class="fu">get_salaries</span><span class="op">(</span>years <span class="op">=</span> <span class="fl">2010</span><span class="op">:</span><span class="fl">2020</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Getting salary table for year 2010 ... ok. (0.98s) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Getting salary table for year 2011 ... ok. (0.71s) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Getting salary table for year 2012 ... ok. (0.63s) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Getting salary table for year 2013 ... ok. (0.59s) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Getting salary table for year 2014 ... ok. (0.64s) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Getting salary table for year 2015 ... ok. (0.60s) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Getting salary table for year 2016 ... ok. (0.60s) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Getting salary table for year 2017 ... ok. (0.64s) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Getting salary table for year 2018 ... ok. (0.61s) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Getting salary table for year 2019 ... ok. (0.64s) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Getting salary table for year 2020 ... ok. (0.69s) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Getting salary table for year 2010 ... ok. (1.11s) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Getting salary table for year 2011 ... ok. (0.96s) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Getting salary table for year 2012 ... ok. (0.83s) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Getting salary table for year 2013 ... ok. (0.83s) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Getting salary table for year 2014 ... ok. (0.82s) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Getting salary table for year 2015 ... ok. (0.88s) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Getting salary table for year 2016 ... ok. (0.82s) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Getting salary table for year 2017 ... ok. (0.85s) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Getting salary table for year 2018 ... ok. (0.84s) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Getting salary table for year 2019 ... ok. (0.91s) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Getting salary table for year 2020 ... ok. (0.86s) </span>
 <span class="r-in"><span><span class="va">salaries</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1,212 × 8</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    pay_group step   salary unit  tariff_title      tarif…¹ tariff_d…² tariff_d…³</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> E 15Ü     step_1  <span style="text-decoration: underline;">4</span>628. €     Entgelttabelle T… 2010    2010-03-01 2011-03-31</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> E 15Ü     step_2  <span style="text-decoration: underline;">5</span>139. €     Entgelttabelle T… 2010    2010-03-01 2011-03-31</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> E 15Ü     step_3  <span style="text-decoration: underline;">5</span>624. €     Entgelttabelle T… 2010    2010-03-01 2011-03-31</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> E 15Ü     step_4  <span style="text-decoration: underline;">5</span>941. €     Entgelttabelle T… 2010    2010-03-01 2011-03-31</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> E 15Ü     step_5  <span style="text-decoration: underline;">6</span>020. €     Entgelttabelle T… 2010    2010-03-01 2011-03-31</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> E 15Ü     step_6    <span style="color: #BB0000;">NA</span>  €     Entgelttabelle T… 2010    2010-03-01 2011-03-31</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> E 15      step_1  <span style="text-decoration: underline;">3</span>674. €     Entgelttabelle T… 2010    2010-03-01 2011-03-31</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> E 15      step_2  <span style="text-decoration: underline;">4</span>076. €     Entgelttabelle T… 2010    2010-03-01 2011-03-31</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> E 15      step_3  <span style="text-decoration: underline;">4</span>227. €     Entgelttabelle T… 2010    2010-03-01 2011-03-31</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> E 15      step_4  <span style="text-decoration: underline;">4</span>764. €     Entgelttabelle T… 2010    2010-03-01 2011-03-31</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    pay_group  step salary unit  tariff_title       tarif…¹ tariff_d…² tariff_d…³</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> E 15Ü         1  <span style="text-decoration: underline;">4</span>628. €     Entgelttabelle TV… 2010    2010-03-01 2011-03-31</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> E 15Ü         2  <span style="text-decoration: underline;">5</span>139. €     Entgelttabelle TV… 2010    2010-03-01 2011-03-31</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> E 15Ü         3  <span style="text-decoration: underline;">5</span>624. €     Entgelttabelle TV… 2010    2010-03-01 2011-03-31</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> E 15Ü         4  <span style="text-decoration: underline;">5</span>941. €     Entgelttabelle TV… 2010    2010-03-01 2011-03-31</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> E 15Ü         5  <span style="text-decoration: underline;">6</span>020. €     Entgelttabelle TV… 2010    2010-03-01 2011-03-31</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> E 15Ü         6    <span style="color: #BB0000;">NA</span>  €     Entgelttabelle TV… 2010    2010-03-01 2011-03-31</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> E 15          1  <span style="text-decoration: underline;">3</span>674. €     Entgelttabelle TV… 2010    2010-03-01 2011-03-31</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> E 15          2  <span style="text-decoration: underline;">4</span>076. €     Entgelttabelle TV… 2010    2010-03-01 2011-03-31</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> E 15          3  <span style="text-decoration: underline;">4</span>227. €     Entgelttabelle TV… 2010    2010-03-01 2011-03-31</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> E 15          4  <span style="text-decoration: underline;">4</span>764. €     Entgelttabelle TV… 2010    2010-03-01 2011-03-31</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 1,202 more rows, and abbreviated variable names ¹​tariff_year,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ²​tariff_date_from, ³​tariff_date_to</span></span>
 </code></pre></div>
