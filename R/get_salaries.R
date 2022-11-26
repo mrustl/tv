@@ -6,12 +6,12 @@
 #' @noRd
 lookup_type <-  function() {
   list(
-    "monthly" = "1",
-    "annual" = "12",
-    "quarterly" = "3",
-    "weekly" = "w",
-    "weekdays" = "v",
-    "daily" = "t"
+    monthly = "1",
+    annual = "12",
+    quarterly = "3",
+    weekly = "w",
+    weekdays = "v",
+    daily = "t"
   )
 }
 
