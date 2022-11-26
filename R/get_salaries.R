@@ -25,10 +25,8 @@ lookup_type <-  function() {
 #' @noRd
 get_temporal_resolution <- function (type) {
   lookup <- lookup_type()
-  type <- as.character(type)
-  names(lookup)[lookup == type]
+  names(lookup)[unlist(lookup) == as.character(type)]
 }
-
 
 #' Get Salary
 #'
