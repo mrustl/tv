@@ -6,12 +6,12 @@
 #' @noRd
 lookup_type <-  function() {
   list(
-    "monthly" = "1",
-    "annual" = "12",
-    "quarterly" = "3",
-    "weekly" = "w",
-    "weekdays" = "v",
-    "daily" = "t"
+    monthly = "1",
+    annual = "12",
+    quarterly = "3",
+    weekly = "w",
+    weekdays = "v",
+    daily = "t"
   )
 }
 
@@ -25,10 +25,8 @@ lookup_type <-  function() {
 #' @noRd
 get_temporal_resolution <- function (type) {
   lookup <- lookup_type()
-  type <- as.character(type)
-  names(lookup)[lookup == type]
+  names(lookup)[unlist(lookup) == as.character(type)]
 }
-
 
 #' Get Salary
 #'
@@ -39,7 +37,6 @@ get_temporal_resolution <- function (type) {
 #' "t": Tageswerte, "v": werktagswerte (default: 1)
 #' @return tibble in list format with salaries
 #' @export
-#'
 #' @examples
 #' get_salary()
 #' @importFrom rlang .data
@@ -49,21 +46,22 @@ get_temporal_resolution <- function (type) {
 #' @importFrom tidyr pivot_longer
 #' @importFrom tidyselect starts_with
 #'
-get_salary <- function(year = 2009,
-                       union_rate = "tv-l",
-                       area = "west",
-                       type = 1) {
-  url <-
-    sprintf(
-      "https://oeffentlicher-dienst.info/c/t/rechner/%s/%s/a/%d?id=%s-%d&matrix=%s",
-      union_rate,
-      area,
-      as.integer(year),
-      union_rate,
-      as.integer(year),
-      as.character(type)
-    )
-
+get_salary <- function(
+    year = 2009,
+    union_rate = "tv-l",
+    area = "west",
+    type = 1
+)
+{
+  url <- sprintf(
+    "https://oeffentlicher-dienst.info/c/t/rechner/%s/%s/a/%d?id=%s-%d&matrix=%s",
+    union_rate,
+    area,
+    as.integer(year),
+    union_rate,
+    as.integer(year),
+    as.character(type)
+  )
 
   date_from_to <- rvest::read_html(url) %>%
     rvest::html_element("div#incenter") %>%
@@ -73,7 +71,7 @@ get_salary <- function(year = 2009,
     unlist() %>%
     as.Date(format = "%d.%m.%Y")
 
-  stopifnot(length(date_from_to) != 0)
+  stopifnot(length(date_from_to) > 0L)
 
   suppressWarnings(
     tv_tbl <- rvest::read_html(url) %>%
@@ -81,36 +79,37 @@ get_salary <- function(year = 2009,
       rvest::html_table()
   )
 
-  title <- names(tv_tbl)[1]
+  title <- names(tv_tbl)[1L]
 
-  unit <- as.character(tv_tbl[1, 1])
+  unit <- as.character(tv_tbl[1L, 1L])
 
-  pay_step <- paste0("step_", as.character(tv_tbl[1, 2:ncol(tv_tbl)]))
+  pay_step <- paste0("step_", as.character(tv_tbl[1L, -1L]))
 
-  tv_tbl <- tv_tbl[-1, ]
+  tv_tbl <- tv_tbl[-1L, ]
+
   names(tv_tbl) <- c("pay_group", pay_step)
 
   tv_tbl %>%
-    dplyr::filter(stringr::str_detect(.data$pay_group, "[A-Z]\\s?[0-9]+")) %>%
-    dplyr::mutate(pay_group = stringr::str_replace(.data$pay_group,
-                                                   "\u00A0",
-                                                   " ")) %>%
+    dplyr::filter(
+      stringr::str_detect(.data$pay_group, "[A-Z]\\s?[0-9]+")
+    ) %>%
+    dplyr::mutate(
+      pay_group = stringr::str_replace(.data$pay_group, "\u00A0", " ")
+    ) %>%
     tidyr::pivot_longer(
       cols = tidyselect::starts_with("step_"),
       names_to = "step",
       values_to = "salary"
     ) %>%
     dplyr::mutate(
-      step = stringr::str_remove(.data$step, "step_") %>%
-        as.integer(),
+      step = as.integer(stringr::str_remove(.data$step, "step_")),
       unit = unit,
       title = title,
       area = tolower(area),
       year = stringr::str_extract(.data$title, "[0-9]{4}"),
-      date_from = date_from_to[1],
-      date_to = date_from_to[2]
+      date_from = date_from_to[1L],
+      date_to = date_from_to[2L]
     )
-
 }
 
 #' Get Salaries
@@ -120,17 +119,19 @@ get_salary <- function(year = 2009,
 #' @param dbg print debug messages (default: TRUE)
 #' @return tibble with salaries for multiple years
 #' @export
-#'
 #' @examples
 #' salaries <- get_salaries(years = 2008:2021)
 #' salaries
 #' @importFrom kwb.utils catAndRun
 #' @importFrom dplyr bind_rows
-get_salaries <- function(years = 2008:2021,
-                         union_rate = "tv-l",
-                         area = "west",
-                         type = 1,
-                         dbg = TRUE) {
+get_salaries <- function(
+    years = 2008:2021,
+    union_rate = "tv-l",
+    area = "west",
+    type = 1,
+    dbg = TRUE
+)
+{
   salaries <- lapply(years, function(year) {
     kwb.utils::catAndRun(
       messageText = sprintf(
@@ -140,19 +141,16 @@ get_salaries <- function(years = 2008:2021,
         area,
         as.integer(year)
       ),
-      expr = {
-        try(get_salary(
-          year = year,
-          union_rate = union_rate,
-          area = area,
-          type = type
-        ))
-      },
+      expr = try(get_salary(
+        year = year,
+        union_rate = union_rate,
+        area = area,
+        type = type
+      )),
       dbg = dbg
     )
   })
 
-  salaries[sapply(salaries, function(x)
-    ! inherits(x, "try-error"))] %>%
+  salaries[!sapply(salaries, kwb.utils::isTryError)] %>%
     dplyr::bind_rows()
 }

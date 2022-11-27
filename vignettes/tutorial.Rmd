@@ -15,8 +15,6 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
-library(tv)
-
 tvl_salaries_monthly <- tv::get_salaries(years = 2008:2021)
 
 DT::datatable(tvl_salaries_monthly)
