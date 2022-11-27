@@ -3,7 +3,7 @@ pkgdown: 2.0.6
 pkgdown_sha: ~
 articles:
   tutorial: tutorial.html
-last_built: 2022-11-26T16:14Z
+last_built: 2022-11-27T02:45Z
 urls:
   reference: https://mrustl.de/tv/reference
   article: https://mrustl.de/tv/articles
