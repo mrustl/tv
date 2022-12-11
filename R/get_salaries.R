@@ -54,7 +54,7 @@ get_salary <- function(
 )
 {
   url <- sprintf(
-    "https://oeffentlicher-dienst.info/c/t/rechner/%s/%s/a/%d?id=%s-%d&matrix=%s",
+    "https://oeffentlicher-dienst.info/c/t/rechner/%s/%s/%d?id=%s-%d&matrix=%s",
     union_rate,
     area,
     as.integer(year),
@@ -102,6 +102,7 @@ get_salary <- function(
       values_to = "salary"
     ) %>%
     dplyr::mutate(
+      union_rate = union_rate,
       step = as.integer(stringr::str_remove(.data$step, "step_")),
       unit = unit,
       title = title,
