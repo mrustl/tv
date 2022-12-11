@@ -13,6 +13,7 @@ lookup_type <-  function() {
     weekdays = "v",
     daily = "t"
   )
+
 }
 
 #' Helper function: get temporal resolution
@@ -40,6 +41,7 @@ get_temporal_resolution <- function (type) {
 #' @examples
 #' get_salary()
 #' @importFrom rlang .data
+#' @importFrom kwb.utils revertListAssignments
 #' @importFrom rvest read_html html_element html_text html_table
 #' @importFrom stringr str_extract_all str_detect str_remove
 #' @importFrom dplyr filter select mutate
@@ -89,6 +91,8 @@ get_salary <- function(
 
   names(tv_tbl) <- c("pay_group", pay_step)
 
+  salary_postfix <- kwb.utils::revertListAssignments(lookup_type())[[type]]
+
   tv_tbl %>%
     dplyr::filter(
       stringr::str_detect(.data$pay_group, "[A-Z]\\s?[0-9]+")
@@ -99,7 +103,7 @@ get_salary <- function(
     tidyr::pivot_longer(
       cols = tidyselect::starts_with("step_"),
       names_to = "step",
-      values_to = "salary"
+      values_to = paste0("salary_", salary_postfix)
     ) %>%
     dplyr::mutate(
       union_rate = union_rate,
@@ -107,7 +111,7 @@ get_salary <- function(
       unit = unit,
       title = title,
       area = tolower(area),
-      year = stringr::str_extract(.data$title, "[0-9]{4}"),
+      year = as.integer(stringr::str_extract(.data$title, "[0-9]{4}")),
       date_from = date_from_to[1L],
       date_to = date_from_to[2L]
     )
