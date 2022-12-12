@@ -4,7 +4,12 @@
 \alias{get_salary}
 \title{Get Salary}
 \usage{
-get_salary(year = 2009, union_rate = "tv-l", area = "west", type = 1)
+get_salary(
+  year = 2009L,
+  union_rate = "tv-l",
+  area = "west",
+  resolution = "monthly"
+)
 }
 \arguments{
 \item{year}{year of tariff (default: 2009)}
@@ -13,8 +18,9 @@ get_salary(year = 2009, union_rate = "tv-l", area = "west", type = 1)
 
 \item{area}{default: "west"}
 
-\item{type}{1: Monatswerte, 12: Jahreswerte, 3: Quartalswerte, "w": Wochenwerte,
-"t": Tageswerte, "v": werktagswerte (default: 1)}
+\item{resolution}{"monthly": Monatswerte, "annual": Jahreswerte, "quarterly":
+Quartalswerte, "weekly": Wochenwerte, "weekdays": werktagswerte, "daily":
+Tageswerte. Default: "monthly"}
 }
 \value{
 tibble in list format with salaries

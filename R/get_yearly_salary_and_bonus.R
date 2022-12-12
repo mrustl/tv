@@ -3,11 +3,11 @@
 #' Get Yearly Salary and Bonus
 #'
 #' @inheritParams get_salary
-#' @importFrom kwb.utils selectColumns
-#' @importFrom tibble tibble
-#' @data optional. Data frame with columns "union_rate", "area", "year",
+#' @param data optional. Data frame with columns "union_rate", "area", "year",
 #'  "pay_group", "step". If given, the function is called for each row of this
 #'  data frame
+#' @importFrom kwb.utils selectColumns
+#' @importFrom tibble tibble
 #' @export
 #'
 get_yearly_salary_and_bonus <- function(

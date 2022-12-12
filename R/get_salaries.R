@@ -1,32 +1,21 @@
 #' Helperfunction: lookup type for temporal resolution of salary table
 #'
-#' @return list with
+#' @param resolution one of "monthly", "annual", "quarterly", "weekly",
+#'   "weekdays", "daily"
+#' @return type string as required as part of URL
 #' @keywords internal
 #' @noMd
 #' @noRd
-lookup_type <-  function() {
-  list(
+resolution_to_type <- function(resolution)
+{
+  kwb.utils::selectElements(elements = resolution, list(
     monthly = "1",
     annual = "12",
     quarterly = "3",
     weekly = "w",
     weekdays = "v",
     daily = "t"
-  )
-
-}
-
-#' Helper function: get temporal resolution
-#'
-#' @param type type
-#'
-#' @return name of temporal resolution from lookup
-#' @keywords internal
-#' @noMd
-#' @noRd
-get_temporal_resolution <- function (type) {
-  lookup <- lookup_type()
-  names(lookup)[unlist(lookup) == as.character(type)]
+  ))
 }
 
 #' Get Salary
@@ -34,8 +23,9 @@ get_temporal_resolution <- function (type) {
 #' @param year year of tariff (default: 2009)
 #' @param union_rate default: "tv-l"
 #' @param area default: "west"
-#' @param type 1: Monatswerte, 12: Jahreswerte, 3: Quartalswerte, "w": Wochenwerte,
-#' "t": Tageswerte, "v": werktagswerte (default: 1)
+#' @param resolution "monthly": Monatswerte, "annual": Jahreswerte, "quarterly":
+#'   Quartalswerte, "weekly": Wochenwerte, "weekdays": werktagswerte, "daily":
+#'   Tageswerte. Default: "monthly"
 #' @return tibble in list format with salaries
 #' @export
 #' @examples
@@ -49,10 +39,10 @@ get_temporal_resolution <- function (type) {
 #' @importFrom tidyselect starts_with
 #'
 get_salary <- function(
-    year = 2009,
+    year = 2009L,
     union_rate = "tv-l",
     area = "west",
-    type = 1
+    resolution = "monthly"
 )
 {
   url <- sprintf(
@@ -62,7 +52,7 @@ get_salary <- function(
     as.integer(year),
     union_rate,
     as.integer(year),
-    as.character(type)
+    resolution_to_type(resolution)
   )
 
   date_from_to <- rvest::read_html(url) %>%
@@ -91,8 +81,6 @@ get_salary <- function(
 
   names(tv_tbl) <- c("pay_group", pay_step)
 
-  salary_postfix <- kwb.utils::revertListAssignments(lookup_type())[[type]]
-
   tv_tbl %>%
     dplyr::filter(
       stringr::str_detect(.data$pay_group, "[A-Z]\\s?[0-9]+")
@@ -103,7 +91,7 @@ get_salary <- function(
     tidyr::pivot_longer(
       cols = tidyselect::starts_with("step_"),
       names_to = "step",
-      values_to = paste0("salary_", salary_postfix)
+      values_to = paste0("salary_", resolution)
     ) %>%
     dplyr::mutate(
       union_rate = union_rate,
@@ -133,7 +121,7 @@ get_salaries <- function(
     years = 2008:2021,
     union_rate = "tv-l",
     area = "west",
-    type = 1,
+    resolution = "monthly",
     dbg = TRUE
 )
 {
@@ -141,7 +129,7 @@ get_salaries <- function(
     kwb.utils::catAndRun(
       messageText = sprintf(
         "Getting '%s' salary table for '%s' ('%s') for year %d",
-        get_temporal_resolution(type),
+        resolution,
         union_rate,
         area,
         as.integer(year)
@@ -150,7 +138,7 @@ get_salaries <- function(
         year = year,
         union_rate = union_rate,
         area = area,
-        type = type
+        resolution = resolution
       )),
       dbg = dbg
     )

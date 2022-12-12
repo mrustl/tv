@@ -8,7 +8,7 @@ get_salaries(
   years = 2008:2021,
   union_rate = "tv-l",
   area = "west",
-  type = 1,
+  resolution = "monthly",
   dbg = TRUE
 )
 }
@@ -19,8 +19,9 @@ get_salaries(
 
 \item{area}{default: "west"}
 
-\item{type}{1: Monatswerte, 12: Jahreswerte, 3: Quartalswerte, "w": Wochenwerte,
-"t": Tageswerte, "v": werktagswerte (default: 1)}
+\item{resolution}{"monthly": Monatswerte, "annual": Jahreswerte, "quarterly":
+Quartalswerte, "weekly": Wochenwerte, "weekdays": werktagswerte, "daily":
+Tageswerte. Default: "monthly"}
 
 \item{dbg}{print debug messages (default: TRUE)}
 }
