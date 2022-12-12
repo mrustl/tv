@@ -16,6 +16,7 @@ Imports:
     rlang,
     rvest,
     stringr,
+    tibble,
     tidyr,
     tidyselect
 Suggests: 
