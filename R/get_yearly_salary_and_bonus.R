@@ -3,6 +3,8 @@
 #' Get Yearly Salary and Bonus
 #'
 #' @inheritParams get_salary
+#' @param pay_group pay group as retrieved by [get_salary()] or [get_salaries()]
+#' @param step step as retrieved by [get_salary()] or [get_salaries()]
 #' @param data optional. Data frame with columns "union_rate", "area", "year",
 #'  "pay_group", "step". If given, the function is called for each row of this
 #'  data frame
