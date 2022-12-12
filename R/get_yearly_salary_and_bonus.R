@@ -55,6 +55,18 @@ get_yearly_salary_and_bonus <- function(
 
   html <- rvest::read_html(url)
 
+  value_args <- extract_yearly_salary_and_bonus(
+    html, base_args, xpath = xpath_1
+  )
+
+  if (!all(lengths(value_args) == 1L) || any(is.na(unlist(value_args)))) {
+
+    # Try alternative path
+    value_args <- extract_yearly_salary_and_bonus(
+      html, base_args, xpath = xpath_2
+    )
+  }
+
   base_args <- list(
     union_rate = union_rate,
     area = area,
@@ -63,19 +75,7 @@ get_yearly_salary_and_bonus <- function(
     step = step
   )
 
-  result <- extract_yearly_salary_and_bonus(html, base_args, xpath = xpath_1)
-
-  if (nrow(result) == 0L) {
-    message("Could not extract yearly salary and bonus. Returning NULL")
-    return(NULL)
-  }
-
-  if (!is.na(kwb.utils::selectColumns(result, "salary_yearly"))) {
-    return(result)
-  }
-
-  # Try alternative path
-  extract_yearly_salary_and_bonus(html, base_args, xpath = xpath_2)
+  do.call(tibble::tibble, c(base_args, value_args))
 }
 
 # extract_yearly_salary_and_bonus ----------------------------------------------
@@ -101,7 +101,5 @@ extract_yearly_salary_and_bonus <- function(html, base_args, xpath)
       as.numeric()
   })
 
-  value_args <- stats::setNames(as.list(values), names(keywords))
-
-  do.call(tibble::tibble, c(base_args, value_args))
+  stats::setNames(as.list(values), names(keywords))
 }
