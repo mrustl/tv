@@ -18,11 +18,10 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 tvl_salaries_monthly <- tv::get_salaries(years = 2008:2021)
-
 DT::datatable(tvl_salaries_monthly)
 ```
 
-Download yearly extra payments (bonus)
+## Download yearly extra payments (bonus)
 
 ```{r bonus}
 # Load the pipe operator
@@ -36,16 +35,24 @@ salary_bonus <- tv::get_yearly_salary_and_bonus(
 # Save salary_bonus in rds file
 #kwb.utils::createDirectory("./inst/extdata")
 #saveRDS(salary_bonus, "./inst/extdata/yearly-salary-and-bonus.rds")
-
-salary_bonus$percentage <- salary_bonus$extra_yearly / salary_bonus$salary_yearly * 100
+#salary_bonus <- readRDS("./inst/extdata/yearly-salary-and-bonus.rds")
+  
+salary_bonus$percentage <- round(
+  salary_bonus$extra_yearly / salary_bonus$salary_yearly * 100, 
+  digits = 2L
+)
 
 DT::datatable(salary_bonus)
+```
 
-bonus_summary <- dplyr::group_by(salary_bonus, union_rate, area, pay_group) %>%
+```{r bonus_summary}
+bonus_summary <- salary_bonus %>%
+  dplyr::group_by(union_rate, area, pay_group) %>%
   dplyr::summarise(
     min_percentage = min(percentage, na.rm = TRUE),
     max_percentage = max(percentage, na.rm = TRUE), 
     .groups = "drop"
-  ) %>%
-  DT::datatable()
+  )
+
+DT::datatable(bonus_summary)
 ```
