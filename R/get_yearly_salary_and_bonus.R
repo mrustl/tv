@@ -43,7 +43,7 @@ get_yearly_salary_and_bonus <- function(
     year,
     kwb.utils::multiSubstitute(pay_group, list(
       " " = "_",
-      "Ü" = "%DC"
+      "\u00dc" = "%DC" # Ue
     )),
     step
   )
