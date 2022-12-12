@@ -115,7 +115,7 @@ get_salary <- function(
 #' @examples
 #' salaries <- get_salaries(years = 2008:2021)
 #' salaries
-#' @importFrom kwb.utils catAndRun
+#' @importFrom kwb.utils catAndRun moveColumnsToFront
 #' @importFrom dplyr bind_rows
 get_salaries <- function(
     years = 2008:2021,
@@ -145,5 +145,9 @@ get_salaries <- function(
   })
 
   salaries[!sapply(salaries, kwb.utils::isTryError)] %>%
-    dplyr::bind_rows()
+    dplyr::bind_rows() %>%
+    kwb.utils::moveColumnsToFront(c(
+      "union_rate", "area", "title", "year", "date_from", "date_to",
+      "pay_group", "step"
+    ))
 }
