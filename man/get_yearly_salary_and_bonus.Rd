@@ -19,6 +19,10 @@ get_yearly_salary_and_bonus(
 \item{area}{default: "west"}
 
 \item{year}{year of tariff (default: 2009)}
+
+\item{data}{optional. Data frame with columns "union_rate", "area", "year",
+"pay_group", "step". If given, the function is called for each row of this
+data frame}
 }
 \description{
 Get Yearly Salary and Bonus
